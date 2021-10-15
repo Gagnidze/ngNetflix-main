@@ -3,7 +3,7 @@
     // position: relative;
 }
 
-.movie-component {
+.main-display {
     display: flex;
     flex-direction: column;
 
@@ -17,7 +17,8 @@
         .carousel-box {
 
             overflow-x: scroll;
-            padding: 0 70px;
+            padding: 0 45px;
+            // margin: 0;
 
             &::-webkit-scrollbar {
                 display: none;
@@ -32,9 +33,7 @@
             right: -.4%;
         }
 
-        .disable {
-            display: none;
-        }
+        
 
         .scroll-btn {
             display: flex;
@@ -56,8 +55,12 @@
                 font-weight: 400;
                 align-self: center;
             }
+            
         }
-
+        
+        .disable {
+            display: none;
+        }
     }
 
     .section-headliner-text {

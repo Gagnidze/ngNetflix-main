@@ -1,23 +1,23 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
-import { MovieComponent } from '../shared/movie/movie.component';
+import { AfterViewInit, Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { RequestsService } from '../shared/requests.service';
 import { ScrollerService } from '../shared/scroller.service';
-import { SliderDirective } from './slider.directive';
-
 
 @Component({
   selector: 'app-dyna-slider',
   templateUrl: './dyna-slider.component.html',
-  styleUrls: ['./dyna-slider.component.scss']
+  styleUrls: ['./dyna-slider.component.scss'],
+  providers: [ScrollerService]
 })
 
-export class DynaSliderComponent implements OnInit, AfterViewInit {
+export class DynaSliderComponent implements OnInit {
 
-  @Input() sliderObjects = {};
+  counter: number = 0;
+  firstLapRight: boolean = true;
+  firstLapLeft: boolean = true;
 
-  // @ViewChild(SliderDirective) sliderHost: SliderDirective;
+  @Input() sliderObjects: object[] = [];
 
-  @ViewChild('el') scrollBox: object;
+  @ViewChild('el') scrollBox: HTMLElement;
 
   @ViewChild('left') leftSlider: object;
 
@@ -53,62 +53,46 @@ export class DynaSliderComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-
-
-    // this.genres.forEach((el, i) => {
-    //   this.reqService.getMovies(el.id)
-    // });
-
-    // this.reqService.movies.subscribe(
-    //   (res) => {
-    //     this.allMovies.push(res);
-
-    // setTimeout(() => {
-
-
-
-    //   const comFactory = this.componentFactoryResolver.resolveComponentFactory(MovieComponent)
-    //   const hostViewContainerRef = this.sliderHost.viewContainerRef;
-    //   const componentRef =
-    //   hostViewContainerRef.createComponent<MovieComponent>(comFactory);
-    //   componentRef.instance.movieData = this.allMovies;
-
-    //   console.log('reeeeeeeeeeeeeeeee')
-    // }, 1000);
-
-
-
-
-    // }
-    // )
-  }
-
-  ngAfterViewInit() {
-    // const movie = new MovieComponent();
-
-
-    // console.log(comFactory)
-    // console.log(this.sliderHost)
-    // console.log('ge')
-
-    // hostViewContainerRef.clear();
-
-    // hostViewContainerRef.createComponent<MovieComponent>(comFactory)
-
-
-
-    // console.log(hostViewContainerRef)
-
-    // console.log(componentRef)
-    // const componentRef = viewContainerRef.createComponent<AdComponent>(componentFactory);
-    // componentRef.instance.data = adItem.data;
-
+    this.sliderObjects.push(...this.sliderObjects, ...this.sliderObjects)
   }
 
   scrollFunction(direction: string) {
-    console.log(this.leftSlider)
-    console.log(this.scrollBox)
-    this.scrollService.scroll(this.scrollBox, this.leftSlider, direction);
+
+    console.log('here')
+    console.log(this.sliderObjects)
+
+
+    this.scrollService.scroll(
+      this.scrollBox,
+      this.leftSlider,
+      direction,
+      this.counter,
+      this.firstLapRight,
+      this.firstLapLeft
+    );
+
+    if (direction === 'right') {
+      if (this.counter === 4 && this.firstLapRight) {
+        this.firstLapRight = false;
+        this.counter = 0;
+      } else if (this.counter === 3 && !this.firstLapRight) {
+        this.counter = 0;
+      } else {
+        this.counter++;
+      }
+      console.log(this.counter)
+    } else if (direction === 'left') {
+      if(this.firstLapRight && this.counter === 1) {
+        this.firstLapRight = false;
+      }
+      if (this.counter === 0) {
+        this.counter = 3;
+      } else {
+        this.counter--;
+      }
+      console.log(this.counter)
+    }
+
   }
 
 }
