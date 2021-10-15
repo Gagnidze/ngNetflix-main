@@ -1,0 +1,28 @@
+<div class="movie-component">
+
+    <div class="carousel-wrapper">
+
+        <div (click)="scrollFunction('left')" class="scroll-btn scrl-left disable" #left>
+            <i class="fas fa-angle-left scrl-arrow"></i>
+        </div>
+
+        <div class="carousel-box" #el>
+            <app-movie #posterElement class="genre-section" [movieData]="sliderObjects">
+            </app-movie>
+        </div>
+
+        <div (click)="scrollFunction('right')" class="scroll-btn scrl-right">
+            <i class="fas fa-angle-right scrl-arrow"></i>
+        </div>
+
+    </div>
+</div>
+
+<!-- <h1>hi</h1> -->
+<!-- <ng-template sliderHost>
+    
+</ng-template> -->
+
+<!-- <ng-content>
+
+</ng-content> -->

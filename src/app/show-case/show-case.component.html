@@ -1,0 +1,28 @@
+<!-- <div class="movie-component" *ngFor="let arr of allMovies; let i = index">
+    <span class="section-headliner-text">{{genres[i].name}}</span>
+
+    <div class="carousel-wrapper">
+        <div (click)="scrollFunction(i, 'left')" class="scroll-btn scrl-left disable" #left>
+            <i class="fas fa-angle-left scrl-arrow"></i>
+        </div>
+        
+        <div class="carousel-box" #el>
+            
+            <app-movie #posterElement class="genre-section" [movieData]="allMovies[i]"></app-movie>
+            
+        </div>
+        
+        <div (click)="scrollFunction(i, 'right')" class="scroll-btn scrl-right">
+            <i class="fas fa-angle-right scrl-arrow"></i>
+        </div>
+    </div>
+
+</div> -->
+
+
+<div class="movie-component" *ngFor="let arr of allMovies; let i = index">
+    <span class="section-headliner-text">{{genres[i].name}}</span>
+
+    <app-dyna-slider [sliderObjects]="arr"></app-dyna-slider>
+
+</div>
