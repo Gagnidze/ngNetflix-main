@@ -10,6 +10,8 @@ import { ShowCaseComponent } from './show-case/show-case.component';
 // import { StoreModule } from '@ngrx/store';
 import { DynaSliderComponent } from './dyna-slider/dyna-slider.component';
 import { SliderDirective } from './dyna-slider/slider.directive';
+import { DetailsComponent } from './shared/details/details.component';
+import { RefDirective } from './shared/ref.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SliderDirective } from './dyna-slider/slider.directive';
     HeaderComponent,
     ShowCaseComponent,
     DynaSliderComponent,
-    SliderDirective
+    SliderDirective,
+    DetailsComponent,
+    RefDirective
   ],
   imports: [
     BrowserModule,

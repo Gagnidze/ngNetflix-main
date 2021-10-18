@@ -1,5 +1,6 @@
 <div *ngFor="let movie of movieData; let i = index">
-    <div class="tester">
+    <div (click)="showDetails(i)" class="tester">
         <img class="poster" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="Could not get the PHOTO !">
     </div>
 </div>
+<ng-template appRef></ng-template>
