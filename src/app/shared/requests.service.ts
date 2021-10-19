@@ -21,7 +21,7 @@ export class RequestsService {
   HttpGetMovies(
     genreId: number,
     key: string = environment.key,
-    adultContent: boolean = false
+    adultContent: boolean = true
   ) {
     return this.http.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&include_adult=${adultContent}&include_video=false&page=2&with_watch_monetization_types=flatrate&with_genres=${genreId}`)
       .pipe(

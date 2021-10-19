@@ -35,7 +35,10 @@
             <div class="details-container">
                 <div class="left-details-container">
                     <div class="meta-data-container">
-                        <span class="match">95% MATCH</span>
+                        <span class="match meta-data">95% MATCH</span>
+                        <span *ngIf="movieDetails.adult" class="detail-text adult meta-data">18+</span>
+                        <span class="detail-text meta-data">{{movieDetails.release_date |date}}</span>
+                        <span class="detail-text hd meta-data ">HD</span>
                     </div>
                     <div class="description">
                         <span class="description-text">{{movieDetails.overview}}</span>
@@ -50,6 +53,8 @@
                     <!-- </div> -->
                     <!-- <div class="keywords"> -->
                         <span class="detail-marker">Release Date - <span class="detail-text">{{movieDetails.release_date}}</span></span>
+                    <!-- <div class="keywords"> -->
+                        <span class="detail-marker">Original Title - <span class="detail-text">{{movieDetails.original_title}}</span></span>
                     <!-- </div> -->
                 </div>
             </div>
