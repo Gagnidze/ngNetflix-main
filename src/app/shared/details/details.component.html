@@ -1,8 +1,8 @@
-<div (click)="close()" class="backdrop">
+<div class="backdrop">
     <div class="container">
         <div class="simple-info-box">
             <div style="background-image: url(https://image.tmdb.org/t/p/w500/{{movieDetails.poster_path}})"
-            class="image-content full-image">
+                class="image-content full-image">
 
                 <button (click)="close()" class="close-btn round-btn"><i class="fas fa-times icon"></i></button>
 
@@ -10,10 +10,10 @@
                     <div class="left-wrapper">
 
                         <div class="play-btn">
-                            <i class="fas fa-play icon"></i>
+                            <i class="fas fa-play"></i>
                             <span>Play</span>
                         </div>
-                        
+
                         <div class="add-to-list-btn round-btn video-btn">
                             <i class="fas fa-plus video-icon"></i>
                         </div>
@@ -26,11 +26,37 @@
                             <i class="fas fa-thumbs-down video-icon"></i>
                         </div>
                     </div>
+                    <div class="round-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
                 </div>
             </div>
+            <!--  -->
+            <div class="details-container">
+                <div class="left-details-container">
+                    <div class="meta-data-container">
+                        <span class="match">95% MATCH</span>
+                    </div>
+                    <div class="description">
+                        <span class="description-text">{{movieDetails.overview}}</span>
+                    </div>
+                </div>
+                <div class="right-details-container">
+                    <!-- <div class="cast"> -->
+                        <span class="detail-marker">Original Language - <span class="detail-text">{{movieDetails.original_language}}</span></span>
+                    <!-- </div> -->
+                    <!-- <div class="genres"> -->
+                        <span class="detail-marker">Score - <span class="detail-text">{{movieDetails.vote_average}}</span></span>
+                    <!-- </div> -->
+                    <!-- <div class="keywords"> -->
+                        <span class="detail-marker">Release Date - <span class="detail-text">{{movieDetails.release_date}}</span></span>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!--  -->
             <!-- <img  alt=""> -->
         </div>
-        <span class="text">{{movieDetails.original_title}}</span>
+        <!-- <span class="text">{{movieDetails.original_title}}</span>
         <span class="text">{{movieDetails.release_date}}</span>
         <span class="text">{{movieDetails.id}}</span>
         <span class="text">{{movieDetails.id}}</span>
@@ -49,7 +75,7 @@
         <span class="text">{{movieDetails.id}}</span>
         <span class="text">{{movieDetails.id}}</span>
         <span class="text">{{movieDetails.id}}</span>
-        <span class="text">some data</span>
+        <span class="text">some data</span> -->
 
     </div>
 </div>
