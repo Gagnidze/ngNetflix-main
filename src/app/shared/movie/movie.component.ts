@@ -1,4 +1,5 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DetailsComponent } from '../details/details.component';
 import { RefDirective } from '../ref.directive';
 import { movieType } from '../types/movieRes.interface';
@@ -8,12 +9,14 @@ import { movieType } from '../types/movieRes.interface';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent implements OnInit, OnDestroy {
 
   @ViewChild(RefDirective) detailsRef: RefDirective
 
   @Input() movieData: movieType[];
   @Input() index: number;
+
+  closeEventSub: Subscription;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver
@@ -30,11 +33,15 @@ export class MovieComponent implements OnInit {
     const detailsComponentFactory = this.componentFactoryResolver.resolveComponentFactory(DetailsComponent);
 
     const detailsComponentRef = this.detailsRef.viewContainerRef.createComponent(detailsComponentFactory);
-    
+
     detailsComponentRef.instance.movieDetails = this.movieData[i];
 
-    detailsComponentRef.instance.closeEvent.subscribe(() => {
+    this.closeEventSub = detailsComponentRef.instance.closeEvent.subscribe(() => {
       detailsComponentRef.destroy();
     })
+  }
+
+  ngOnDestroy() {
+    this.closeEventSub.unsubscribe();
   }
 }
