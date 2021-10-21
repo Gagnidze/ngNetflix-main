@@ -8,36 +8,36 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('vidRef') video: ElementRef;
-  // @ViewChild('playPause') playPause: ElementRef;
 
   playing: boolean = true;
+  muted: boolean = true;
+
+  videoElement: HTMLVideoElement;
 
   constructor() { }
 
   ngOnInit(): void { }
 
   ngAfterViewInit() {
-    console.log(this.video.nativeElement)
     this.video.nativeElement.controls = false;
-
-    // this.playPause.nativeElement
+    this.videoElement = this.video.nativeElement;
   }
 
   playPauseMethod() {
-
-    console.log(this.playing);
-    
-    if(this.playing) {
-      // data.play();
-      this.video.nativeElement.pause();
-      this.playing !== this.playing;
-      // console.log(this.playing)
+    if (this.playing) {
+      this.videoElement.pause();
     } else if (!this.playing) {
-      // console.log(this.video)
-      this.video.nativeElement.play();  
-      this.playing !== this.playing;
+      this.videoElement.play();
     }
     this.playing = !this.playing
   }
 
+  muteUnmuteMethod() {
+    if (this.muted) {
+      this.videoElement.volume = 0
+    } else if (!this.muted) {
+      this.videoElement.volume = 1
+    }
+    this.muted = !this.muted
+  }
 }

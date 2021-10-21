@@ -1,9 +1,12 @@
 <div class="main-display">
 
-    <div class="carousel-wrapper">
+    <div counterDirective class="carousel-wrapper">
 
-        <div (click)="scrollFunction('left')" class="scroll-btn scrl-left disable" #left>
-            <i class="fas fa-angle-left scrl-arrow"></i>
+        <div (click)="scrollFunction('left')" 
+        fad
+        class="scroll-btn scrl-left disable" #left
+        id="left-scroll">
+            <i id="left-scroll-arrow" class="fas fa-angle-left scrl-arrow"></i>
         </div>
 
         <div class="carousel-box" #el>
@@ -11,8 +14,9 @@
             </app-movie>
         </div>
 
-        <div (click)="scrollFunction('right')" class="scroll-btn scrl-right">
-            <i class="fas fa-angle-right scrl-arrow"></i>
+        <div id="right-scroll" 
+        (click)="scrollFunction('right')" class="scroll-btn scrl-right">
+            <i id="right-scroll-arrow" class="fas fa-angle-right scrl-arrow"></i>
         </div>
 
     </div>

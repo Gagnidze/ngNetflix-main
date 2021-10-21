@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
-import { RequestsService } from '../shared/requests.service';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ScrollerService } from '../shared/scroller.service';
 import { movieType } from '../shared/types/movieRes.interface';
+import { SliderDirective } from './slider.directive';
 
 @Component({
   selector: 'app-dyna-slider',
@@ -11,6 +11,8 @@ import { movieType } from '../shared/types/movieRes.interface';
 })
 
 export class DynaSliderComponent implements OnInit {
+
+  @ViewChild(SliderDirective) sliderEl: SliderDirective;
 
   counter: number = 0;
   firstLapRight: boolean = true;
@@ -31,42 +33,14 @@ export class DynaSliderComponent implements OnInit {
   }
 
   scrollFunction(direction: string) {
-
-    console.log('here')
-    console.log(this.sliderObjects)
-
-
     this.scrollService.scroll(
       this.scrollBox,
       this.leftSlider,
       direction,
-      this.counter,
-      this.firstLapRight,
-      this.firstLapLeft
+      this.sliderEl.counter,
+      this.sliderEl.firstLapRight,
+      this.sliderEl.firstLapLeft
     );
-
-    if (direction === 'right') {
-      if (this.counter === 4 && this.firstLapRight) {
-        this.firstLapRight = false;
-        this.counter = 0;
-      } else if (this.counter === 3 && !this.firstLapRight) {
-        this.counter = 0;
-      } else {
-        this.counter++;
-      }
-      console.log(this.counter)
-    } else if (direction === 'left') {
-      if(this.firstLapRight && this.counter === 1) {
-        this.firstLapRight = false;
-      }
-      if (this.counter === 0) {
-        this.counter = 3;
-      } else {
-        this.counter--;
-      }
-      console.log(this.counter)
-    }
-
   }
 
 }
