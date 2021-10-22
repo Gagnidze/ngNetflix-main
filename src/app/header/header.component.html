@@ -27,16 +27,23 @@
 </div>
 
 <figure class="player-section">
-    <video autoplay controls class="video-player" src="https://movietrailers.apple.com/movies/mgm/no-time-to-die/no-time-to-die-final-trailer_h480p.mov" #vidRef>
+    <video autoplay controls class="video-player"
+        src="https://movietrailers.apple.com/movies/mgm/no-time-to-die/no-time-to-die-final-trailer_h480p.mov" #vidRef>
         <button>play</button>
     </video>
+    <div class="shadow"></div>
     <div class="on-video-btn-container">
         <div class="left-wrap">
-            <button *ngIf="!playing" (click)="playPauseMethod()" class="play-pause-btn square-btn" id="playpause" 
-            type="button" #playPause>Play</button>
+            <button *ngIf="!playing" (click)="playPauseMethod()" class="play-pause-btn square-btn" id="playpause"
+                type="button" #playPause>
+                <i class="fas fa-play"></i>Play</button>
+
             <!-- Check why there are local references -->
-            <button *ngIf="playing" (click)="playPauseMethod()" class="play-pause-btn square-btn" id="playpause" type="button" #playPause>Pause</button>
-            <button class="more-info-btn square-btn">More Info</button>
+
+            <button *ngIf="playing" (click)="playPauseMethod()" class="play-pause-btn square-btn" id="playpause"
+                type="button" #playPause>
+                <i class="fas fa-pause"></i>Pause</button>
+            <button class="more-info-btn square-btn"><i class="fas fa-info"></i>More Info</button>
         </div>
         <div class="right-wrap">
             <button *ngIf="muted" (click)="muteUnmuteMethod()" class="volume-button round-icon-btn">
