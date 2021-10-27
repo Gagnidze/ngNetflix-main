@@ -12,7 +12,6 @@ $netflix-white: rgba(255,255,255,.9);
     top: 0;
     left: 0;
     background: rgba($color: #000000, $alpha: .4);
-    // border: 1px solid white;
     justify-content: center;
     align-items: center;
     z-index: 20;
@@ -20,7 +19,6 @@ $netflix-white: rgba(255,255,255,.9);
     .container {
         display: flex;
         flex-direction: column;
-        // border: 1px solid red;
         width: 850px;
         height: 95vh;
         background-color:#181818;
@@ -31,7 +29,6 @@ $netflix-white: rgba(255,255,255,.9);
 
         .simple-info-box {
             height: 480px;
-            // border: 1px solid red;
         }
 
         .text {
@@ -95,7 +92,6 @@ $netflix-white: rgba(255,255,255,.9);
     font-size: 25px;
     font-weight: 300;
     color: $netflix-white;
-    position: absolute;
 }
 
 .round-btn {
@@ -104,8 +100,7 @@ $netflix-white: rgba(255,255,255,.9);
 
 .video-btn {
     @include basic-round-btn();
-    
-    margin: 0 2px;
+    margin: 0 3px;
 }
 
 .icon {
@@ -114,20 +109,15 @@ $netflix-white: rgba(255,255,255,.9);
 
 .video-icon {
     @include basic-icon();
-    
-    // left: -11%;
-    left: 0;
-    // top: -2%;
-    top: 0;
-    width: 20px;
-    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .play-btn {
     padding: 0px 15px;
     display: flex;
-    // border: 1px solid red;
     align-items: center;
     background-color: #fff;
     border-radius: 4px;
@@ -176,7 +166,6 @@ $netflix-white: rgba(255,255,255,.9);
 .details-container {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    // height: 100%;
 
     .left-details-container {
         display: flex;
@@ -190,7 +179,6 @@ $netflix-white: rgba(255,255,255,.9);
             font-weight: 400;
         }
 
-        
         .meta-data {
             font-size: 18px;
             color: $netflix-white;
